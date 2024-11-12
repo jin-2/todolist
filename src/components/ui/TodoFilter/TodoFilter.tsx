@@ -15,7 +15,7 @@ const TodoFilter = ({}: TodoFilterProps) => {
   const [filter, setFilter] = useState(FILTERS[0].value);
 
   return (
-    <StyledTodoFilter>
+    <StyledTodoFilter role="radiogroup">
       {FILTERS.map(({ label, value }) => (
         <Button
           key={value}
