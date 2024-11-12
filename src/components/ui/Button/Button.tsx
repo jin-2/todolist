@@ -22,6 +22,7 @@ const StyledButton = styled.button`
   width: 108px;
   height: 40px;
   border-radius: 12px;
+  background-color: #fff;
   color: #454545;
   font-size: 16px;
   font-weight: 600;

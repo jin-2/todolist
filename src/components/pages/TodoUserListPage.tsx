@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import TodoForm from "../ui/TodoForm/TodoForm";
-import Button from "../ui/Button/Button";
+import TodoFilter from "../ui/TodoFilter/TodoFilter";
 
 interface Props {}
 
@@ -11,9 +11,7 @@ const TodoUserListPage = ({}: Props) => {
     <Container>
       <h1>To Do List</h1>
       <TodoForm />
-      <Button className="active">All</Button>
-      <Button>To Do</Button>
-      <Button>Done</Button>
+      <TodoFilter />
     </Container>
   );
 };
