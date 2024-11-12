@@ -1,7 +1,7 @@
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
 const globalStyles = css`
-  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css');
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
 
   a,
   abbr,
@@ -147,32 +147,49 @@ const globalStyles = css`
 
   body {
     font-family:
-      'Pretendard Variable',
+      "Pretendard Variable",
       Pretendard,
       -apple-system,
       BlinkMacSystemFont,
       system-ui,
       Roboto,
-      'Helvetica Neue',
-      'Segoe UI',
-      'Apple SD Gothic Neo',
-      'Noto Sans KR',
-      'Malgun Gothic',
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol',
+      "Helvetica Neue",
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "Noto Sans KR",
+      "Malgun Gothic",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
       sans-serif;
     font-size: 20px;
     color: #000;
+    background-color: #f6f6f6;
   }
 
-  input[type='search']::-webkit-search-cancel-button {
+  input {
+    font-size: inherit;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
     appearance: none;
   }
 
   input::placeholder {
     font-family: inherit;
     color: #b9b9b9;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    white-space: nowrap;
   }
 `;
 
