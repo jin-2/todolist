@@ -17,10 +17,10 @@ const TodoForm = ({}: TodoFormProps) => {
   };
 
   return (
-    <StyledTodoForm onClick={handleClickInputWrapper}>
+    <StyledTodoForm onClick={handleClickInputWrapper} data-testid="todo-form">
       <form onSubmit={handleSubmit}>
         <label className="sr-only" htmlFor="todo-text">
-          할 일을 입력해주세요.
+          할 일을 입력해 주세요.
         </label>
         <input
           ref={inputRef}
