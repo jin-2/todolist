@@ -2,16 +2,14 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Close from "../../../assets/icons/close.svg";
-import Check from "../../../assets/icons/check.svg";
+import ButtonCheck from "../ButtonCheck/ButtonCheck";
 
 interface TodoItemProps {}
 
 const TodoItem = ({}: TodoItemProps) => {
   return (
     <li>
-      <button type="button">
-        <Check />
-      </button>
+      <ButtonCheck checked={true} />
       <p>출근하고 비타민 먹기</p>
       <button type="button" aria-label="할 일 지우기">
         <Close />
