@@ -3,6 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import TodoForm from "../ui/TodoForm/TodoForm";
 import TodoFilter from "../ui/TodoFilter/TodoFilter";
+import TodoItem from "../ui/TodoItem/TodoItem";
 
 interface Props {}
 
@@ -12,6 +13,9 @@ const TodoUserListPage = ({}: Props) => {
       <h1>To Do List</h1>
       <TodoForm />
       <TodoFilter />
+      <ul>
+        <TodoItem />
+      </ul>
     </Container>
   );
 };
