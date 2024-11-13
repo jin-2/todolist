@@ -8,14 +8,25 @@ interface TodoItemProps {}
 
 const TodoItem = ({}: TodoItemProps) => {
   return (
-    <li>
+    <StyledTodoItem>
       <ButtonCheck checked={true} />
-      <p>출근하고 비타민 먹기</p>
+      <p className="todo-text">Do something</p>
       <ButtonRemove />
-    </li>
+    </StyledTodoItem>
   );
 };
 
 export default TodoItem;
 
-const StyledTodoItem = styled.div``;
+const StyledTodoItem = styled.li`
+  display: flex;
+  align-items: center;
+  padding-top: calc(32px - 4px);
+  padding-bottom: calc(32px - 4px);
+  padding-left: calc(16px - 4px);
+
+  .todo-text {
+    flex: 1;
+    margin-left: calc(16px - 4px);
+  }
+`;
