@@ -23,4 +23,5 @@ export default ButtonRemove;
 const StyledButtonRemove = styled.button`
   width: 40px;
   height: 40px;
+  color: #b9b9b9;
 `;
