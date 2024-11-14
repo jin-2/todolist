@@ -1,10 +1,15 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import TodoFilter from "./TodoFilter";
+import { RecoilRoot } from "recoil";
 
 describe("<TodoFilter />", () => {
   beforeEach(() => {
-    render(<TodoFilter />);
+    render(
+      <RecoilRoot>
+        <TodoFilter />
+      </RecoilRoot>,
+    );
   });
   it("초기 상태가 'All' 버튼이 활성화된 상태로 렌더링된다.", () => {
     const allButton = screen.getByRole("button", { name: "All" });
