@@ -4,18 +4,24 @@ import styled from "@emotion/styled";
 import TodoForm from "../ui/TodoForm/TodoForm";
 import TodoFilter from "../ui/TodoFilter/TodoFilter";
 import TodoList from "../ui/TodoList/TodoList";
+import { useRecoilValue } from "recoil";
+import { todoListState } from "../../recoil/todoState";
 
 interface Props {}
 
 const TodoUserListPage = ({}: Props) => {
+  const todos = useRecoilValue(todoListState);
+
   return (
     <Container>
       <h1>To Do List</h1>
       <TodoForm />
-      <StyledTodoContents>
-        <TodoFilter />
-        <TodoList />
-      </StyledTodoContents>
+      {todos.length ? (
+        <StyledTodoContents>
+          <TodoFilter />
+          <TodoList />
+        </StyledTodoContents>
+      ) : null}
     </Container>
   );
 };
