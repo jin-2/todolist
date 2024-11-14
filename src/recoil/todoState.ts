@@ -35,7 +35,7 @@ export const filteredTodoListState = selector({
     });
 
     return filteredList.sort(
-      (a, b) => b.updatedDate.getTime() - a.updatedDate.getTime(),
+      (a, b) => a.updatedDate.getTime() - b.updatedDate.getTime(),
     );
   },
 });
