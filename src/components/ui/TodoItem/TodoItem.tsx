@@ -1,24 +1,40 @@
 "use client";
-import React from "react";
 import styled from "@emotion/styled";
+import { useRecoilState } from "recoil";
 import ButtonCheck from "../ButtonCheck/ButtonCheck";
 import ButtonRemove from "../ButtonRemove/ButtonRemove";
-import { Todo } from "../../../recoil/todoState";
+import { Todo, todoListState } from "../../../recoil/todoState";
 
 interface TodoItemProps {
   todo: Todo;
 }
 
 const TodoItem = ({ todo }: TodoItemProps) => {
+  const [, setTodos] = useRecoilState(todoListState);
+
+  const toggleTodo = () => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === todo.id
+          ? {
+              ...prevTodo,
+              completed: !prevTodo.completed,
+              updatedDate: new Date(),
+            }
+          : prevTodo,
+      ),
+    );
+  };
+
+  const removeTodo = () => {
+    setTodos((prev) => prev.filter((prevTodo) => prevTodo.id !== todo.id));
+  };
+
   return (
     <StyledTodoItem>
-      <ButtonCheck checked={todo.completed} />
+      <ButtonCheck checked={todo.completed} onClick={toggleTodo} />
       <p className="todo-text">{todo.text}</p>
-      <ButtonRemove
-        onClick={() => {
-          console.log("delete");
-        }}
-      />
+      <ButtonRemove onClick={removeTodo} />
     </StyledTodoItem>
   );
 };
