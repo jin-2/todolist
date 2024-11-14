@@ -23,13 +23,19 @@ export const filteredTodoListState = selector({
     const filter = get(todoFilterState);
     const list = get(todoListState);
 
-    switch (filter) {
-      case "todo":
-        return list.filter((todo) => !todo.completed);
-      case "done":
-        return list.filter((todo) => todo.completed);
-      default:
-        return list;
-    }
+    const filteredList = list.filter((todo) => {
+      switch (filter) {
+        case "todo":
+          return !todo.completed;
+        case "done":
+          return todo.completed;
+        default:
+          return true;
+      }
+    });
+
+    return filteredList.sort(
+      (a, b) => b.updatedDate.getTime() - a.updatedDate.getTime(),
+    );
   },
 });
