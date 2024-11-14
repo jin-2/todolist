@@ -6,7 +6,6 @@ export const getUpdateTodos = (todos: Todo[], todoId: Todo["id"]) => {
       return {
         ...prevTodo,
         completed: !prevTodo.completed,
-        updatedDate: new Date(),
       };
     }
     return prevTodo;

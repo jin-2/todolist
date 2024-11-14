@@ -56,12 +56,6 @@ describe("TodoItem Utility Functions", () => {
     expect(updatedTodos[1].completed).toBe(true);
   });
 
-  it("getUpdateTodos는 주어진 todo의 updatedDate를 현재 시간으로 설정한다.", () => {
-    const beforeDate = sampleTodos[0].updatedDate;
-    const updatedTodos = getUpdateTodos(sampleTodos, 1);
-    expect(updatedTodos[0].updatedDate).not.toEqual(beforeDate);
-  });
-
   it("getRemoveTodos는 주어진 todo를 리스트에서 제거한다.", () => {
     const updatedTodos = getRemoveTodos(sampleTodos, 1);
     expect(updatedTodos.length).toBe(1);
