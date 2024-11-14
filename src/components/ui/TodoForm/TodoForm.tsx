@@ -1,14 +1,16 @@
 "use client";
 import { FormEvent, useRef } from "react";
 import styled from "@emotion/styled";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { todoListState } from "../../../recoil/todoState";
+import { validateTodo } from "../../../utils/todoForm/validation";
 
 interface TodoFormProps {}
 
 const TodoForm = ({}: TodoFormProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [, setTodos] = useRecoilState(todoListState);
+  const todos = useRecoilValue(todoListState);
+  const setTodos = useSetRecoilState(todoListState);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,6 +19,12 @@ const TodoForm = ({}: TodoFormProps) => {
 
     const value = inputRef.current.value.trim() || "";
     if (value === "") return;
+
+    const validationError = validateTodo(inputRef.current.value, todos);
+    if (validationError) {
+      alert(validationError);
+      return;
+    }
 
     const newTodo = {
       id: Date.now(),
