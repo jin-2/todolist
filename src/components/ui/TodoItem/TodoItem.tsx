@@ -4,6 +4,10 @@ import { useRecoilState } from "recoil";
 import ButtonCheck from "../ButtonCheck/ButtonCheck";
 import ButtonRemove from "../ButtonRemove/ButtonRemove";
 import { Todo, todoListState } from "../../../recoil/todoState";
+import {
+  getRemoveTodos,
+  getUpdateTodos,
+} from "../../../utils/todoItem/todoItem";
 
 interface TodoItemProps {
   todo: Todo;
@@ -13,21 +17,11 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   const [, setTodos] = useRecoilState(todoListState);
 
   const toggleTodo = () => {
-    setTodos((prev) =>
-      prev.map((prevTodo) =>
-        prevTodo.id === todo.id
-          ? {
-              ...prevTodo,
-              completed: !prevTodo.completed,
-              updatedDate: new Date(),
-            }
-          : prevTodo,
-      ),
-    );
+    setTodos((prevTodos) => getUpdateTodos(prevTodos, todo.id));
   };
 
   const removeTodo = () => {
-    setTodos((prev) => prev.filter((prevTodo) => prevTodo.id !== todo.id));
+    setTodos((prevTodos) => getRemoveTodos(prevTodos, todo.id));
   };
 
   return (
