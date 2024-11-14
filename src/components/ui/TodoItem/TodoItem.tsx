@@ -1,6 +1,6 @@
 "use client";
 import styled from "@emotion/styled";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import ButtonCheck from "../ButtonCheck/ButtonCheck";
 import ButtonRemove from "../ButtonRemove/ButtonRemove";
 import { Todo, todoListState } from "../../../recoil/todoState";
@@ -8,16 +8,31 @@ import {
   getRemoveTodos,
   getUpdateTodos,
 } from "../../../utils/todoItem/todoItem";
+import { validateIncompleteTodos } from "../../../utils/todoForm/validation";
 
 interface TodoItemProps {
   todo: Todo;
 }
 
 const TodoItem = ({ todo }: TodoItemProps) => {
-  const [, setTodos] = useRecoilState(todoListState);
+  const setTodos = useSetRecoilState(todoListState);
+
+  const validateTodoLength = (todos: Todo[]): boolean => {
+    const incompleteTodosError = validateIncompleteTodos(todos);
+    if (incompleteTodosError) {
+      alert(incompleteTodosError);
+      return false;
+    }
+    return true;
+  };
 
   const toggleTodo = () => {
-    setTodos((prevTodos) => getUpdateTodos(prevTodos, todo.id));
+    setTodos((prevTodos) => {
+      if (todo.completed && !validateTodoLength(prevTodos)) {
+        return prevTodos;
+      }
+      return getUpdateTodos(prevTodos, todo.id);
+    });
   };
 
   const removeTodo = () => {
