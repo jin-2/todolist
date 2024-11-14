@@ -3,15 +3,22 @@ import React from "react";
 import styled from "@emotion/styled";
 import ButtonCheck from "../ButtonCheck/ButtonCheck";
 import ButtonRemove from "../ButtonRemove/ButtonRemove";
+import { Todo } from "../../../recoil/todoState";
 
-interface TodoItemProps {}
+interface TodoItemProps {
+  todo: Todo;
+}
 
-const TodoItem = ({}: TodoItemProps) => {
+const TodoItem = ({ todo }: TodoItemProps) => {
   return (
     <StyledTodoItem>
-      <ButtonCheck checked={true} />
-      <p className="todo-text">Do something</p>
-      <ButtonRemove />
+      <ButtonCheck checked={todo.completed} />
+      <p className="todo-text">{todo.text}</p>
+      <ButtonRemove
+        onClick={() => {
+          console.log("delete");
+        }}
+      />
     </StyledTodoItem>
   );
 };
