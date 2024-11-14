@@ -2,15 +2,17 @@
   "include": [
     "svgr.d.ts",
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [
+    "cypress",
     "node_modules",
     "**/*.test.ts?(x)"
   ],
   "compilerOptions": {
+    "types": ["jest", "node"],
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
